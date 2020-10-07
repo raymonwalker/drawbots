@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel='icon' href='static/favicons/dancingRobot.ico' type='image/x-icon'/ >
+   <title>{{ title }}</title>
+</head>
+
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="static/bootstrap/css/bootstrap-theme.css" />
+<link rel="stylesheet" href="static/css/drawbots.css" />
+
+<!-- Make Ajax calls from button clicks to trigger Flask / python code from serveJohnnyPive.py and send commands to robot -->
+<script language="javascript" type="text/javascript" src="static/jquery-3.4.1.min.js"></script>
+<script language="javascript" type="text/javascript" src="static/p5.min.js"></script>
+<script language="javascript" type="text/javascript" src="static/turtle.js"></script>
+<script language="javascript" type="text/javascript" src="static/drawbotController.js"></script>
+<script language="javascript" type="text/javascript" src="static/drawbotManualController.js"></script>
+<script language="javascript" type="text/javascript" src="static/drawbotP5.js"></script>
+
+<body onload="setTimeout('init();', 100);">
+  <main>
+   <h1>Drawbots Control Panel</h1>
+   <a href="/follow" class="btn btn-default">Follow Mode</a>
+   <br><br>
+   <p>Driving distance increment</p>
+   <select id="speed">
+      <option value="0.1">Distance 1</option>
+      <option value="0.2" selected="selected">Distance 2</option>
+      <option value="0.3">Distance 3</option>
+      <option value="0.4">Distance 4</option>
+      <option value="0.5">Distance 5</option>
+   </select>
+
+
+   <br><br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <button type="button" class="btn glyphicon glyphicon-arrow-up" onclick="goForward();"> </button>
+   <br><br>
+   <button type="button" class="btn glyphicon glyphicon-arrow-left" onclick="goLeft();"> </button>
+   &nbsp;
+   <button type="button" class="btn glyphicon glyphicon-stop" onclick="goStop();"> </button>
+   &nbsp;
+   <button type="button" class="btn glyphicon glyphicon-arrow-right" onclick="goRight();"> </button>
+   <br><br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <button type="button" class="btn glyphicon glyphicon-arrow-down" onclick="goBackward();"> </button>
+
+   <br><br><br>
+   <div id='simContainer'></div>
+   <br>
+   <button id="scripted" type="button" class="btn glyphicon glyphicon-pencil" onclick="goStop();">Scripted </button>
+   <br><br>
+   <div id="scriptedControl">
+     Draw Script Parameters: <br>
+     F - Forward <br>
+     R - Right   <br>
+     L - Left    <br>
+     B - Back    <br>
+     Example: FFFRFF translates to forward 3 moves, right 1 move, forward 2 moves <br>
+     <input type="text" id="drawScriptParameters" size="100" placeholder="Enter draw script parameters ex FFFRFF"><br>
+     <button id="executeDrawScript" style="background-color:red; border-color:blue; color:white" onclick="executeDrawScript();">Execute Draw Script</button>
+   </div>
+   <h4>The date and time on the server is: {{ time }}</h4>
+ </main>
+   </body>
+</html>
+<script>
+  $("#scriptedControl").toggle();
+  $("#scripted").click(function() {
+    $("#scriptedControl").toggle();
+  });
+</script>

@@ -1,0 +1,14 @@
+body{
+  margin: : 0 auto 0 auto;
+  background-color: lightgrey;
+}
+main {
+  background-color: #eee;
+  padding: 50px;
+  width: 80%
+}
+*{
+padding:auto;
+margin:auto;
+text-align:centre;
+}

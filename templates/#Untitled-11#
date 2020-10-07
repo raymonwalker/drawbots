@@ -1,0 +1,47 @@
+function executeDrawScript() {
+  var scriptParameters = document.getElementById('drawScriptParameters').value;
+  disableAllControlButtons();
+
+  for (const c of scriptParameters) {
+
+    switch(c) {
+      case 'F':
+       goForward();
+       continue;
+      case 'f':
+        goForward();
+        continue;
+      case 'R':
+        goRight();
+        continue;
+      case 'r':
+        goRight();
+        continue;
+      case 'B':
+        goBackward();
+        continue;
+      case 'b':
+        goBackward();
+        continue;
+      case 'L':
+        goLeft();
+        continue;
+      case 'l':
+        goLeft();
+        continue;
+      default:
+        continue;
+    }
+  }
+}
+
+function disableAllControlButtons() {
+  document.getElementById('drawScriptParameters').setAttribute("disabled","true");
+  document.getElementById('forward').setAttribute("disabled","true");
+  document.getElementById('right').setAttribute("disabled","true");
+  document.getElementById('left').setAttribute("disabled","true");
+  document.getElementById('backward').setAttribute("disabled","true");
+  document.getElementById('stop').setAttribute("disabled","true");
+  document.getElementById('speed').setAttribute("disabled","true");
+  document.getElementById('executeDrawScript').setAttribute("disabled","true");
+}
